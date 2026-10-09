@@ -6,4 +6,5 @@ import ra.demo.model.entity.Department;
 
 @Repository
 public interface DepartmetRepository extends JpaRepository<Department, String> {
+
 }
