@@ -1,0 +1,26 @@
+name: Test Matrix
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  test-matrix:
+    name: Test on Java ${{ matrix.java-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        java-version: [ '17', '21' ]
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v7
+
+      - name: Set up Java
+        uses: actions/setup-java@v6
+        with:
+          java-version: ${{ matrix.java-version }}
+          distribution: 'temurin'
+          cache: 'gradle'
+      - run: chmod +x gradlew
+      - run: ./gradlew test --no-daemon
