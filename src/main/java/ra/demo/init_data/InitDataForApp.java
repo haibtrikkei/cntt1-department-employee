@@ -5,7 +5,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import ra.demo.model.entity.Department;
 import ra.demo.repository.DepartmetRepository;
-import ra.demo.repository.EmployeeRepository;
 
 import java.util.List;
 
@@ -13,7 +12,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class InitDataForApp implements CommandLineRunner {
     private final DepartmetRepository  departmetRepository;
-    private final EmployeeRepository employeeRepository;
 
     @Override
     public void run(String... args) throws Exception {

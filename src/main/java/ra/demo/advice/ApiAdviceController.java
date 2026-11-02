@@ -7,7 +7,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import ra.demo.exception.EmployeeNotFoundException;
 import ra.demo.model.dto.response.ApiDataResponse;
 
 import java.util.HashMap;
@@ -42,14 +41,4 @@ public class ApiAdviceController {
         ), HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(EmployeeNotFoundException.class)
-    public ResponseEntity<ApiDataResponse<String>> handleEmployeeNotFound(EmployeeNotFoundException ex) {
-        return new ResponseEntity<>(new ApiDataResponse<>(
-                false,
-                "Có lỗi xảy ra",
-                null,
-                ex.getLocalizedMessage(),
-                HttpStatus.BAD_REQUEST
-        ), HttpStatus.BAD_REQUEST);
-    }
 }
